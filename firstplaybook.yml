@@ -1,3 +1,6 @@
+# this yml playbook is created to create an s3 bucket in aws console
+# author--jaya chandra naveen
+# date-- 22-02-2025
 ---
 - name: create an s3 bucket using ansible
   hosts: localhost
