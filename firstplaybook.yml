@@ -1,0 +1,12 @@
+---
+- name: create an s3 bucket using ansible
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: create the s3 bucket
+      amazon.aws.s3_bucket:
+        name: my-unique-nucket-5969
+        state: present
+        region: eu-north-1
