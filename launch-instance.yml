@@ -1,3 +1,6 @@
+# this yml playbook is created to create the EC2 instance.
+# author--jaya chandra naveen
+# date-- 22-02025
 ---
 - name: Launch a free-tier EC2 instance
   hosts: localhost
