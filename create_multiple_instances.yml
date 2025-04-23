@@ -1,0 +1,42 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Launch EC2 instances
+      loop:
+        - { image: "ami-0d4f84b7313c8b114", name: "managenode1" }
+        - { image: "ami-08f78cb3cc8a4578e", name: "managenode2" }
+        - { image: "ami-08f78cb3cc8a4578e", name: "managenode3" }
+      amazon.aws.ec2_instance:
+        name: "{{ item.name }}"
+        key_name: mymachine
+        instance_type: t3.micro
+        image_id: "{{ item.image }}"
+        wait: true
+        count: 1
+        region: eu-north-1
+        vpc_subnet_id: subnet-0c02031b2eda73e02
+        security_group: default
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+   
+   
