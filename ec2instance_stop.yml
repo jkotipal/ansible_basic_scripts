@@ -1,0 +1,13 @@
+# author- jaya chandra naveen
+# date_created -- 23-04-2025
+# script to stop particular os instances
+
+---
+- hosts: all
+  become: true
+
+  tasks:
+    - name: shutdown ubuntu instances only
+      ansible.builtin.command: /sbin/shutdown -t now
+      when:
+        ansible_facts["os_family"] == "debian"
