@@ -1,5 +1,11 @@
+# author- jaya chandra naveen
+# date_created -- 23-04-2025
+# script to create multiple instances on aws console
+# --prerequisites--
+# install ansible, python3, boto3
+# configure aws with command of "aws configure" and give a secret keys which are available in console.
 ---
-- hosts: localhost
+- hosts: localhost 
   connection: local
   gather_facts: false
 
@@ -11,8 +17,8 @@
         - { image: "ami-08f78cb3cc8a4578e", name: "managenode3" }
       amazon.aws.ec2_instance:
         name: "{{ item.name }}"
-        key_name: mymachine
-        instance_type: t3.micro
+        key_name: mymachine          # key pairs name available in aws console
+        instance_type: t3.micro      # select the available instance type
         image_id: "{{ item.image }}"
         wait: true
         count: 1
