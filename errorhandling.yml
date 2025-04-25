@@ -1,0 +1,27 @@
+# author- jaya chandra naveen
+# date_created -- 25-04-2025
+# script to install docker and do error handling
+
+---
+- hosts: all
+  become: true
+
+  tasks:
+    - name: make sure the packages openssh and openssl are up to date
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: latest
+      loop:
+        - openssh
+        - openssl
+      ignore_errors: yes
+    - name: verify if docker is installed
+      ansible.builtin.command: docker --version
+      register: output
+      ignore_errors: yes
+    - name: install docker
+      ansible.builtin.apt:
+        name: docker.io
+        state: present
+      when:
+        output.failed == true
