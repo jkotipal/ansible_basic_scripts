@@ -1,0 +1,24 @@
+# author- jaya chandra naveen
+# date_created -- 25-04-2025
+# script to enable s3 bucket versioning
+
+
+---
+- name: enforce s3 buckets versioning on aws account
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: list s3 buckets in aws account
+      aws_s3_bucket_info:   # Use this if you're using Ansible's core modules
+      register: result
+
+    - debug:
+        var: result
+
+    - name: enable versioning on s3 bucket
+      amazon.aws.s3_bucket:
+        name: "{{ item.name }}"
+        versioning: false
+      loop: "{{ result.buckets }}"
+
