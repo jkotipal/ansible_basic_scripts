@@ -26,6 +26,11 @@ sudo apt-get install -y ansible
 # Install Git
 sudo apt-get install -y git
 
+#install aws CLI using curl command
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
 # Display versions to verify installation
 echo
 echo "Installed Versions:"
